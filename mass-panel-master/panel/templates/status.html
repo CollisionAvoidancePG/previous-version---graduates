@@ -1,0 +1,11 @@
+<span id="status">
+    <span id="status-pixhawk-voltage" class="badge {{ badge_color(pixhawk.voltage, 11.3, 11.8) }}">
+        <i class="bi bi-fan px-1"> {{ "%.1f"|format(pixhawk.voltage) }} V</i>
+    </span>
+    <span id="status-jetson-voltage" class="badge {{ badge_color(jetson.voltage, 11.3, 11.8) }}">
+        <i class="bi bi-cpu px-1"> {{ "%.1f"|format(jetson.voltage) }} V</i>
+    </span>
+    <span id="status-remote-signal" class="badge {{ badge_color(remote.signal, -90, -60) }}">
+        <i class="bi bi-controller px-1"> {{ "%.0f"|format(remote.signal) }} dBm</i>
+    </span>
+</span>

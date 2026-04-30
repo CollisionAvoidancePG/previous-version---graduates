@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mass_lidar</name>
+  <version>1.1.0</version>
+  <description>Lidar sensor</description>
+
+  <maintainer email="s171657@student.pg.edu.pl">Piotr Łoziński</maintainer>
+
+  <license>TODO</license> <!-- TODO licence -->
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>catkin_virtualenv</build_depend>
+
+  <build_depend>rospy</build_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <build_depend>rplidar_ros</build_depend>
+  <exec_depend>rplidar_ros</exec_depend>
+
+  <depend>mass_common</depend>
+
+  <export>
+    <pip_requirements>requirements.o</pip_requirements>
+  </export>
+</package>

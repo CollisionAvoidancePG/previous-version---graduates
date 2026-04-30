@@ -1,0 +1,79 @@
+diff --git a/src/zed-ros-wrapper/zed_wrapper/params/common.yaml b/src/zed-ros-wrapper/zed_wrapper/params/common.yaml
+index f2fb207..de904bf 100644
+--- a/src/zed-ros-wrapper/zed_wrapper/params/common.yaml
++++ b/src/zed-ros-wrapper/zed_wrapper/params/common.yaml
+@@ -14,17 +14,17 @@ gain:                       100                                 # Dynamic - work
+ exposure:                   100                                 # Dynamic - works only if `auto_exposure_gain` is false
+ auto_whitebalance:          true                                # Dynamic
+ whitebalance_temperature:   42                                  # Dynamic - works only if `auto_whitebalance` is false
+-depth_confidence:           30                                  # Dynamic
++depth_confidence:           45                                  # Dynamic
+ depth_texture_conf:         100                                 # Dynamic
+-pub_frame_rate:             15.0                                # Dynamic - frequency of publishing of video and depth data
++pub_frame_rate:             10.0                                # Dynamic - frequency of publishing of video and depth data
+ point_cloud_freq:           10.0                                # Dynamic - frequency of the pointcloud publishing (equal or less to `grab_frame_rate` value)
+
+ general:
+     camera_name:                zed                             # A name for the camera (can be different from camera model and node name and can be overwritten by the launch file)
+     zed_id:                     0
+     serial_number:              0
+-    resolution:                 2                               # '0': HD2K, '1': HD1080, '2': HD720, '3': VGA
+-    grab_frame_rate:            15                              # Frequency of frame grabbing for internal SDK operations
++    resolution:                 3                               # '0': HD2K, '1': HD1080, '2': HD720, '3': VGA
++    grab_frame_rate:            9                              # Frequency of frame grabbing for internal SDK operations
+     gpu_id:                     -1
+     base_frame:                 'base_link'                     # must be equal to the frame_id used in the URDF file
+     verbose:                    false                           # Enable info message by the ZED SDK
+@@ -51,11 +51,11 @@ pos_tracking:
+     odometry_frame:             'odom'                          # odometry frame
+     area_memory_db_path:        'zed_area_memory.area'          # file loaded when the node starts to restore the "known visual features" map.
+     save_area_memory_db_on_exit: false                          # save the "known visual features" map when the node is correctly closed to the path indicated by `area_memory_db_path`
+-    area_memory:                true                            # Enable to detect loop closure
++    area_memory:                false                            # Enable to detect loop closure
+     floor_alignment:            false                           # Enable to automatically calculate camera/floor offset
+     initial_base_pose:          [0.0,0.0,0.0, 0.0,0.0,0.0]      # Initial position of the `base_frame` -> [X, Y, Z, R, P, Y]
+     init_odom_with_first_valid_pose: true                       # Enable to initialize the odometry with the first valid pose
+-    path_pub_rate:              2.0                             # Camera trajectory publishing frequency
++    path_pub_rate:              1                             # Camera trajectory publishing frequency
+     path_max_count:             -1                              # use '-1' for unlimited path size
+     two_d_mode:                 false                           # Force navigation on a plane. If true the Z value will be fixed to "fixed_z_value", roll and pitch to zero
+     fixed_z_value:              0.00                            # Value to be used for Z coordinate if `two_d_mode` is true
+diff --git a/src/zed-ros-wrapper/zed_wrapper/params/zed2.yaml b/src/zed-ros-wrapper/zed_wrapper/params/zed2.yaml
+index 8e35539..8c29f99 100644
+--- a/src/zed-ros-wrapper/zed_wrapper/params/zed2.yaml
++++ b/src/zed-ros-wrapper/zed_wrapper/params/zed2.yaml
+@@ -6,8 +6,8 @@ general:
+     camera_model:               'zed2'
+
+ depth:
+-    min_depth:                  0.3             # Min: 0.2, Max: 3.0 - Default 0.7 - Note: reducing this value wil require more computational power and GPU memory
+-    max_depth:                  20.0            # Max: 40.0
++    min_depth:                  0.75             # Min: 0.2, Max: 3.0 - Default 0.7 - Note: reducing this value wil require more computational power and GPU memory
++    max_depth:                  40.0            # Max: 40.0
+
+ pos_tracking:
+     imu_fusion:                 true            # enable/disable IMU fusion. When set to false, only the optical odometry will be used.
+@@ -18,16 +18,16 @@ sensors:
+     publish_imu_tf:             true            # publish `IMU -> <cam_name>_left_camera_frame` TF
+
+ object_detection:
+-    od_enabled:                 false           # True to enable Object Detection [not available for ZED]
+-    model:                      0               # '0': MULTI_CLASS_BOX - '1': MULTI_CLASS_BOX_ACCURATE - '2': HUMAN_BODY_FAST - '3': HUMAN_BODY_ACCURATE - '4': MULTI_CLASS_BOX_MEDIUM - '5': HUMAN_BODY_MEDIUM - '6': PERSON_HEAD_BOX
+-    confidence_threshold:       50              # Minimum value of the detection confidence of an object [0,100]
+-    max_range:                  15.             # Maximum detection range
++    od_enabled:                 true           # True to enable Object Detection [not available for ZED]
++    model:                      1               # '0': MULTI_CLASS_BOX - '1': MULTI_CLASS_BOX_ACCURATE - '2': HUMAN_BODY_FAST - '3': HUMAN_BODY_ACCURATE - '4': MULTI_CLASS_BOX_MEDIUM - '5': HUMAN_BODY_MEDIUM - '6': PERSON_HEAD_BOX
++    confidence_threshold:       45              # Minimum value of the detection confidence of an object [0,100]
++    max_range:                  30.             # Maximum detection range
+     object_tracking_enabled:    true            # Enable/disable the tracking of the detected objects
+     body_fitting:               false           # Enable/disable body fitting for 'HUMAN_BODY_X' models
+     mc_people:                  true            # Enable/disable the detection of persons for 'MULTI_CLASS_BOX_X' models
+     mc_vehicle:                 true            # Enable/disable the detection of vehicles for 'MULTI_CLASS_BOX_X' models
+-    mc_bag:                     true            # Enable/disable the detection of bags for 'MULTI_CLASS_BOX_X' models
++    mc_bag:                     false            # Enable/disable the detection of bags for 'MULTI_CLASS_BOX_X' models
+     mc_animal:                  true            # Enable/disable the detection of animals for 'MULTI_CLASS_BOX_X' models
+-    mc_electronics:             true            # Enable/disable the detection of electronic devices for 'MULTI_CLASS_BOX_X' models
+-    mc_fruit_vegetable:         true            # Enable/disable the detection of fruits and vegetables for 'MULTI_CLASS_BOX_X' models
++    mc_electronics:             false            # Enable/disable the detection of electronic devices for 'MULTI_CLASS_BOX_X' models
++    mc_fruit_vegetable:         false            # Enable/disable the detection of fruits and vegetables for 'MULTI_CLASS_BOX_X' models
+     mc_sport:                   true            # Enable/disable the detection of sport-related objects for 'MULTI_CLASS_BOX_X' models

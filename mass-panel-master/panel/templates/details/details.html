@@ -1,0 +1,48 @@
+<div id="details" class="col-md-4">
+    <table class="table">
+        <thead>
+            <th scope="col">Vessel info</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Position</td>
+                <td>{{ toDD(vessel.position) }}</td>
+            </tr>
+            <tr>
+                <td>Velocity</td>
+                <td>{{ "%.1f"|format(vessel.velocity) }} km/h</td>
+            </tr>
+            <tr>
+                <td>Course</td>
+                <td>{{ "%.1f"|format(vessel.course) }}°</td>
+            </tr>
+        </tbody>
+
+        <thead>
+            <th scope="col">Power</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pixhawk voltage</td>
+                <td>{{ "%.2f"|format(pixhawk.voltage) }} V</td>
+            </tr>
+            <tr>
+                <td>Jetson voltage</td>
+                <td>{{ "%.2f"|format(jetson.voltage) }} V</td>
+            </tr>
+        </tbody>
+
+        <thead>
+            <th scope="col">Remote</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Signal strength</td>
+                <td>{{ "%.0f"|format(remote.signal) }} dBm</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

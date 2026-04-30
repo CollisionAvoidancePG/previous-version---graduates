@@ -1,0 +1,14 @@
+<table id="vessel-info" class="table">
+    <tr>
+        <td>Position</td>
+        <td>{{ toDD(vessel.position) }}</td>
+    </tr>
+    <tr>
+        <td>Velocity</td>
+        <td>{{ "%.1f"|format(vessel.velocity) }} km/h</td>
+    </tr>
+    <tr>
+        <td>Course</td>
+        <td>{{ "%.1f"|format(vessel.course) }}°</td>
+    </tr>
+</table>

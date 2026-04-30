@@ -1,0 +1,4 @@
+# PathSend.srv
+mass_common/PathMsg path
+---
+bool success

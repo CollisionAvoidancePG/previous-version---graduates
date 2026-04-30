@@ -1,0 +1,13 @@
+[Unit]
+Description=ROS EPN
+After=ros-px.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ros-epn.sh
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,36 @@
+@startuml "Environment classes"
+scale 2
+
+abstract class Entity {
+  category: str
+  model: shapely.Polygon
+  model_color: str
+  safe_zone: shapely.Polygon
+  safe_zone_color: str
+  draw()
+}
+
+class DynamicEntity {
+  position: Coords
+  velocity: float
+  course: float
+  trajectory: shapely.Polygon
+  calculate_position(time: float) -> tuple[Point, Polygon, Polygon]
+  calculate_trajectory()
+}
+
+class StaticEntity {
+  graph: list[list[float]]
+}
+
+class Environment {
+  statics: list[StaticEntity]
+  dynamics: list[DynamicEntity]
+}
+
+Entity <|-- DynamicEntity
+Entity <|-- StaticEntity
+Environment *-up- StaticEntity
+Environment *-up- DynamicEntity
+
+@enduml

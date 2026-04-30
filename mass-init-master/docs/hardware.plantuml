@@ -1,0 +1,55 @@
+@startuml Hardware
+skinparam linetype ortho
+!theme mars
+skinparam componentStyle rectangle
+
+[\nZasilanie 12V\n] as 12v1
+[\nZasilanie 12V\n] as 12v2
+
+frame Mikrokomputer {
+    [\n\n       Nvidia Jetson       \n\n] as computer
+    [ZED2] as camera
+    [Modem] as modem
+    [RPLiDAR S1] as lidar
+    [INA219] as power_meter
+}
+
+
+frame Mikrokontroler {
+    [Blok zasilający] as power_brick
+    [\n\n       Pixhawk PX4       \n\n] as controller
+    [Głośnik] as buzzer
+    [Silnik steru] as rudder_motor
+    [GPS] as gps
+    [Sterownik\nsilnika śruby] as proppeler_esc
+    [Silnik śruby] as proppeler_motor
+    [Odbiornik RC] as rc_rx
+    [Pilot zdalnego\nsterowania] as rc
+}
+
+computer - controller : USB
+
+computer -up- power_meter : I2C
+computer -up- modem : USB
+computer -- camera : USB3
+computer -- "USB\n(UART)" lidar
+
+controller -up- power_brick
+controller -- gps
+controller -- buzzer
+controller -- rudder_motor
+controller --- rc_rx
+controller --- proppeler_esc
+proppeler_esc -- proppeler_motor
+
+rc .up. rc_rx
+
+12v1 -[#red]- power_brick
+12v2 -[#red]- power_meter
+power_brick -[#red]- controller
+power_brick -[#red]- proppeler_esc
+power_meter -[#red]- computer
+
+
+
+@enduml

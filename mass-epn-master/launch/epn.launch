@@ -1,0 +1,4 @@
+<launch>
+    <node name="environment_manager_node" pkg="mass_epn" type="environment_manager.py" output="log" />
+    <node name="epn_node" pkg="mass_epn" type="epn.py" output="log" />
+</launch>

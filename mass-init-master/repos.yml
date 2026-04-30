@@ -1,0 +1,44 @@
+repositories:
+  mass-common:
+    type: git
+    url: git@github.com:mass-pg/mass-common.git
+    version: master
+  mass-epn:
+    type: git
+    url: git@github.com:mass-pg/mass-epn.git
+    version: master
+  mass-camera:
+    type: git
+    url: git@github.com:mass-pg/mass-camera.git
+    version: master
+  mass-lidar:
+    type: git
+    url: git@github.com:mass-pg/mass-lidar.git
+    version: master
+  mass-control:
+    type: git
+    url: git@github.com:mass-pg/mass-control.git
+    version: master
+  mass-map:
+    type: git
+    url: git@github.com:mass-pg/mass-map.git
+    version: master
+  mass-panel:
+    type: git
+    url: git@github.com:mass-pg/mass-panel.git
+    version: master
+  rplidar_ros:
+    type: git
+    url: https://github.com/Slamtec/rplidar_ros.git
+    version: master
+  zed-ros-wrapper:
+    type: git
+    url: https://github.com/stereolabs/zed-ros-wrapper.git
+    version: v3.8.x
+  zed-ros-examples:
+    type: git
+    url: https://github.com/stereolabs/zed-ros-examples.git
+    version: v3.8.x
+  ros-power-ina219:
+    type: git
+    url: https://github.com/dheera/ros-power-ina219.git

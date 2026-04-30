@@ -1,0 +1,8 @@
+<launch>
+    <!-- Launch mavros -->
+    <include file="$(find mass_control)/launch/px.launch"/>
+
+    <!-- Launch WaypointManager Service -->
+    <node name="waypoint_manager_server" pkg="mass_control" type="waypoint_manager.py" output="log"/>
+
+</launch>

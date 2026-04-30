@@ -1,0 +1,21 @@
+@startuml "EPN State Machine"
+hide empty description
+
+state dest_req <<join>>
+
+GlobalEPN : Calculate path to destination
+LocalEPN : Calculate path to next\nnode of global path
+Cruising : Apply local path
+
+
+[*] --> Idle
+Idle -down-> dest_req
+dest_req -down-> GlobalEPN : Destination\npublished
+GlobalEPN -down-> LocalEPN : GA\nfinished
+LocalEPN -left-> Cruising : GA\nfinished
+Cruising -up> Idle : Destination\nachieved
+
+
+Cruising -[#gray]-> LocalEPN : Position\ndelta
+LocalEPN -[#gray]-> dest_req
+Cruising -[#gray]-> dest_req

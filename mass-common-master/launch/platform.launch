@@ -1,0 +1,9 @@
+<launch>
+
+    <!-- Launch camera and lidar -->
+    <include file="$(find mass_common)/launch/sensors.launch"/>
+
+    <!-- Launch epn and environment manager -->
+    <include file="$(find mass_epn)/launch/epn.launch"/>
+
+</launch>

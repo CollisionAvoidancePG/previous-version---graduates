@@ -1,0 +1,11 @@
+@startuml "Example SM"
+scale 2
+hide empty description
+
+[*] --> Zablokowany
+Zablokowany -down-> Odblokowany : Wrzucenie\nmonety
+Odblokowany --> Zablokowany : Przejscie\nprzez bramkę
+Zablokowany --> Zablokowany : Przejscie\nprzez bramkę
+Odblokowany --> Odblokowany : Wrzucenie\nmonety
+
+@enduml

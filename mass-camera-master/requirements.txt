@@ -1,0 +1,4 @@
+mass-common~=1.7.1
+opencv-python==4.5.5.64
+open3d==0.15.1
+testresources==2.0.1

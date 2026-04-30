@@ -1,0 +1,5 @@
+# EnvironmentGet.srv
+bool with_detection
+---
+bool success
+mass_common/EnvironmentMsg env

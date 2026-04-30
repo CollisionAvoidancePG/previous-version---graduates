@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mass_common</name>
+  <version>1.7.1</version>
+  <description>Common code used between repositories</description>
+
+  <maintainer email="mass.ship.pg@gmail.com">mass-pg</maintainer>
+
+  <license>TODO</license> <!-- TODO licence -->
+
+  <build_depend>message_generation</build_depend>
+  <depend>message_runtime</depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>catkin_virtualenv</build_depend>
+
+  <build_depend>rospy</build_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <exec_depend>rospy</exec_depend>
+
+  <build_depend>std_msgs</build_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <depend>numpy</depend>
+  <depend>plotly</depend>
+  <depend>pyproj</depend>
+  <depend>shapely</depend>
+
+  <export>
+    <pip_requirements>requirements.o</pip_requirements>
+  </export>
+</package>

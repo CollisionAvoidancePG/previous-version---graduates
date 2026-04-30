@@ -1,0 +1,11 @@
+<launch>
+    <!-- Launch pixhawk and WaypointManager -->
+    <include file="$(find mass_control)/launch/control.launch"/>
+
+	<!-- Launch ina219 -->
+    <node pkg="power_ina219" type="ina219_node" name="ina219">
+        <param name="device" value="/dev/i2c-8" />
+        <param name="rshunt" value="0.02" />
+    </node>
+
+</launch>

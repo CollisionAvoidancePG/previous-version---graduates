@@ -1,0 +1,4 @@
+[flake8]
+per-file-ignores =
+    */args.py: E203, E501
+max-line-length = 100

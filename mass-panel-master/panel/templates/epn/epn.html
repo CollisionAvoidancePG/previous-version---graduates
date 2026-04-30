@@ -1,0 +1,56 @@
+<div id="epn" class="row h-100">
+    <div id="map" class="col-md-6 col-lg-8 h-100 px-0">
+        <div class="btn-group" role="group">
+            <button id="center-location" type="button" class="btn btn-primary" onclick="centerOnVessel()"><i
+                    class="bi bi-cursor"></i>
+            </button>
+            <button id="center-location-user" type="button" class="btn btn-primary" onclick="centerOnUser()">
+                <i class="bi bi-person"></i>
+                <i class="bi bi-cursor"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="col container">
+        <div class="btn-group btn-block mt-2" role="group">
+            <button type="button" class="btn btn-outline-primary" disabled>
+                <i class="bi bi-geo-alt"></i>
+                Destination
+            </button>
+            <button id="destination-set" type="button" class="btn btn-primary"
+                onclick="toggleDestinationInteraction()">Set</button>
+            <button id="destination-remove" type="button" class="btn btn-primary" onclick="removeDestination()"
+                disabled>Remove</button>
+        </div>
+        <div class="btn-group btn-block" role="group">
+            <button type="button" class="btn btn-outline-secondary" disabled>Virtual static</button>
+            <button id="virtual-static-place" type="button" class="btn btn-secondary"
+                onclick="toggleVirtualStaticInteraction()">Place</button>
+            <button id="virtual-static-remove-all" type="button" class="btn btn-secondary"
+                onclick="removeAllVirtualStatics()" disabled>Remove all</button>
+        </div>
+        <div class="btn-group btn-block" role="group">
+            <button type="button" class="btn btn-outline-secondary" disabled>Vessel history</button>
+            <button id="vessel-history-clear" type="button" class="btn btn-secondary"
+                onclick="vesselHistoryClear()">Clear</button>
+        </div>
+        <div class="card my-2">
+            <a class="btn card-header" data-toggle="collapse" data-target="#path-info-collapse">Path information</a>
+            <div id="path-info-collapse" class="card-body collapse show p-0">
+                {% include "epn/path-info.html" %}
+            </div>
+        </div>
+        <div class="card my-2">
+            <a class="btn card-header" data-toggle="collapse" data-target="#vessel-info-collapse">Vessel information</a>
+            <div id="vessel-info-collapse" class="card-body collapse show p-0">
+                {% include "epn/vessel-info.html" %}
+            </div>
+        </div>
+        <div class="card my-2">
+            <a class="btn card-header" data-toggle="collapse" data-target="#map-settings-collapse">Map settings</a>
+            <div id="map-settings-collapse" class="card-body collapse">
+                {% include "epn/map-settings.html" %}
+            </div>
+        </div>
+    </div>
+</div>

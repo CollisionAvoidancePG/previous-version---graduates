@@ -1,0 +1,33 @@
+@startuml "Path classes"
+scale 2
+
+
+class Node {
+  position: Coords
+  point: shapely.Point
+  velocity: Velocity
+  course: float
+  index: int
+  set_course(next: Node)
+  course_change(previous: Node) -> float
+  time_of_arrival(destination: Node)
+}
+
+enum Velocity {
+  SLOW_AHEAD: 1.0
+  HALF_AHEAD: 2.0
+  FULL_AHEAD: 4.0
+}
+
+class Path {
+  nodes: list[Node]
+  line: shapely.LineString
+  feasible: bool
+  update()
+  draw()
+}
+
+Node *-- Velocity
+Path *-- Node
+
+@enduml

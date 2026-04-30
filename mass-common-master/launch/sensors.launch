@@ -1,0 +1,11 @@
+<launch>
+    <!-- Launch zed2 camera -->
+    <include file="$(find zed_wrapper)/launch/zed2.launch"/>
+    <node name="camera_obstacles_node" pkg="mass_camera" type="CameraODSendToEpn.py" output="log"/>
+
+
+    <!-- Launch rpilidar -->
+    <include file="$(find rplidar_ros)/launch/rplidar_s1.launch"/>
+    <node name="lidar_obstacles_node" pkg="mass_lidar" type="FilteringLidarDataAndSendToEpn.py" output="log"/>
+
+</launch>
